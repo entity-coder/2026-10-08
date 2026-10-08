@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Briefly — paste anything, get the gist</title>
+  <meta name="description" content="Briefly: paste long text, pick a mode (TL;DR, ELI5, Action items) and get an instant summary. Free, no signup, no API key." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <h1>Briefly<span class="dot">.</span></h1>
+      <p class="tagline">Too long, didn't read? Paste it here — get the gist in seconds.</p>
+    </header>
+
+    <section class="card">
+      <label class="field-label" for="input-text">Your text</label>
+      <textarea
+        id="input-text"
+        placeholder="Paste an article, meeting notes, a long thread, lecture notes…"
+        maxlength="8000"
+        rows="9"
+      ></textarea>
+      <div class="input-meta">
+        <span id="char-count">0 / 8,000</span>
+        <button id="clear-btn" class="link-btn" type="button">Clear</button>
+      </div>
+
+      <fieldset class="modes">
+        <legend class="field-label">Summary mode</legend>
+        <div class="mode-pills">
+          <label class="pill">
+            <input type="radio" name="mode" value="tldr" checked />
+            <span>TL;DR</span>
+            <small>3 sharp bullets</small>
+          </label>
+          <label class="pill">
+            <input type="radio" name="mode" value="eli5" />
+            <span>ELI5</span>
+            <small>explain like I'm five</small>
+          </label>
+          <label class="pill">
+            <input type="radio" name="mode" value="actions" />
+            <span>Action items</span>
+            <small>what to do next</small>
+          </label>
+        </div>
+      </fieldset>
+
+      <button id="summarize-btn" class="primary" type="button">Summarize ✦</button>
+
+      <div id="error-box" class="error hidden">
+        <p id="error-text"></p>
+        <button id="retry-btn" class="secondary" type="button">Try again</button>
+      </div>
+
+      <div id="result-card" class="result hidden">
+        <div class="result-head">
+          <h2 id="result-title">Summary</h2>
+          <button id="copy-btn" class="secondary" type="button">Copy</button>
+        </div>
+        <div id="result-body" class="result-body"></div>
+        <div id="loading" class="loading hidden">
+          <span class="spinner"></span>
+          <p>Reading it for you…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="history-head">
+        <h2>Recent</h2>
+        <button id="clear-history-btn" class="link-btn" type="button">Clear all</button>
+      </div>
+      <ul id="history-list" class="history">
+        <li class="history-empty">Nothing here yet — your last 10 summaries will appear here.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Free &amp; keyless — powered by the Pollinations text API. Works out of the box, no signup.</p>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
